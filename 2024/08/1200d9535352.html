@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Carlos">
+  <meta name="keywords" content="Carlos,JavaScript,Java,Unity">
+  
+    <meta name="description" content="我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。 下载信息MySQL最新发布版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server  MySQL 8.X 版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server (Ar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 系统 MySQL 9.0.1 安装教程">
+<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352.html">
+<meta property="og:site_name" content="Carlos&#39;s blog">
+<meta property="og:description" content="我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。 下载信息MySQL最新发布版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server  MySQL 8.X 版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server (Ar">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180120534.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180223258.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813214955284.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220101748.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220308898.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220426776.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813221525152.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225102691.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225149247.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225415079.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225443911.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225551016.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231147073.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813230142913.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813230633218.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231009497.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231026625.png">
+<meta property="article:published_time" content="2024-08-13T09:33:00.000Z">
+<meta property="article:modified_time" content="2024-08-14T03:11:17.824Z">
+<meta property="article:author" content="Carlos">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180120534.png">
+  
+  
+  
+  <title>Windows 系统 MySQL 9.0.1 安装教程 - Carlos&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zouxiangzhong1998.github.io","root":"/blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Carlos&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Windows 系统 MySQL 9.0.1 安装教程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-13 17:33" pubdate>
+          2024年8月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          791 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Windows 系统 MySQL 9.0.1 安装教程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。</p>
+<h4 id="下载信息"><a href="#下载信息" class="headerlink" title="下载信息"></a>下载信息</h4><p>MySQL最新发布版本，我推荐使用 zip 的方式安装<br><img src="/blog/2024/08/1200d9535352/file-20240813180120534.png" srcset="/blog/img/loading.gif" lazyload></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL :: Download MySQL Community Server</a></li>
+</ul>
+<p>MySQL 8.X 版本，我推荐使用 zip 的方式安装<br><img src="/blog/2024/08/1200d9535352/file-20240813180223258.png" srcset="/blog/img/loading.gif" lazyload></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">MySQL :: Download MySQL Community Server (Archived Versions)</a></li>
+</ul>
+<p>下载完成后解压<br><img src="/blog/2024/08/1200d9535352/file-20240813214955284.png" srcset="/blog/img/loading.gif" lazyload></p>
+<hr>
+<h4 id="配置初始化"><a href="#配置初始化" class="headerlink" title="配置初始化"></a>配置初始化</h4><p>解压后的目录没有 <code>my.ini</code> 文件，自行创建在安装根目录下添加 <code>my.ini</code> (新建文本文件，将文件后缀改为 .ini)，写入基本配置:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs shell">[mysqld]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置3306端口</span><br>port=3306<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql的安装目录</span><br>basedir=D:\Application\Oracle\MySQL\mysql-9.0.1-winx64<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql数据库的数据的存放目录</span><br>datadir=D:\Application\Oracle\MySQL\mysql-9.0.1-winx64\Data<br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许最大连接数</span><br>max_connections=200<br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许连接失败的次数。</span><br>max_connect_errors=10<br><span class="hljs-meta prompt_"># </span><span class="language-bash">服务端使用的字符集默认为utf8mb4</span><br>character-set-server=utf8mb4<br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建新表时将使用的默认存储引擎</span><br>default-storage-engine=INNODB<br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认使用“mysql_native_password”插件认证</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql_native_password</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql 9.0 是不支持该参数的</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql 8.X 是支持该参数，请根据版本查看该参数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">default_authentication_plugin=mysql_native_password</span><br>[mysql]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql客户端默认字符集</span><br>default-character-set=utf8mb4<br>[client]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql客户端连接服务端时默认使用的端口</span><br>port=3306<br>default-character-set=utf8mb4<br></code></pre></td></tr></table></figure>
+
+<p>配置文件中的路径要和实际存放的路径一致（不要手动创建Data文件夹，如果初始化失败请记住删除Data文件夹）<br><img src="/blog/2024/08/1200d9535352/file-20240813220101748.png" srcset="/blog/img/loading.gif" lazyload></p>
+<hr>
+<h4 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h4><p>在安装时，避免权限问题出错我们尽量使用管理员身份运行CMD，否则在安装时会报错，会导致安装失败的情况<br><img src="/blog/2024/08/1200d9535352/file-20240813220308898.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>因为我存放的目录是在D盘，先切换盘符在进入到指定目录，需要进入到MySQL安装目录下的<code>bin</code>目录<br><img src="/blog/2024/08/1200d9535352/file-20240813220426776.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>在MySQL目录下的bin目录下执行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --initialize --console<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/2024/08/1200d9535352/file-20240813221525152.png" srcset="/blog/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意！[注意] [MY-010454] [服务器] root@localhost: G#syB6W&#x2F;jNMG 就是初始密码（不含首位空格）。在没有更改密码前，需要记住这个密码，后续登录需要用到。复制密码先保存起来!!!</p>
+</blockquote>
+<hr>
+<h4 id="安装MySQL服务-启动MySQL-服务"><a href="#安装MySQL服务-启动MySQL-服务" class="headerlink" title="安装MySQL服务&amp;启动MySQL 服务"></a>安装MySQL服务&amp;启动MySQL 服务</h4><p>安装MySQL服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --install [服务名]                     ###（服务名可以不加默认为mysql）<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/2024/08/1200d9535352/file-20240813225102691.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>表示成功了</p>
+<blockquote>
+<p>如果出现了 The service already exists!<br><img src="/blog/2024/08/1200d9535352/file-20240813225149247.png" srcset="/blog/img/loading.gif" lazyload><br>说明mysql 名称存在<br>可以把它删除掉<br>SC删除的MySQL<br><img src="/blog/2024/08/1200d9535352/file-20240813225415079.png" srcset="/blog/img/loading.gif" lazyload><br>在执行上面安装服务<br><img src="/blog/2024/08/1200d9535352/file-20240813225443911.png" srcset="/blog/img/loading.gif" lazyload></p>
+</blockquote>
+<p>删除对应服务名称命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sc delete mysql<br></code></pre></td></tr></table></figure>
+
+<p>服务安装成功之后通过命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net start mysql<br></code></pre></td></tr></table></figure>
+
+<p>启动MySQL的服务<br><img src="/blog/2024/08/1200d9535352/file-20240813225551016.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>[可选] 关掉mysql服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net stop mysql<br></code></pre></td></tr></table></figure>
+<p><img src="/blog/2024/08/1200d9535352/file-20240813231147073.png" srcset="/blog/img/loading.gif" lazyload></p>
+<hr>
+<h4 id="连接MySQL-修改密码"><a href="#连接MySQL-修改密码" class="headerlink" title="连接MySQL&amp;修改密码"></a>连接MySQL&amp;修改密码</h4><p>在当前数据库的bin目录下 有个 <code>mysql.exe</code> 是可以用于连接mysql服务的命令行客户端工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql -h localhost -P 3306 -u root -p<br></code></pre></td></tr></table></figure>
+<p>输入上面命令后复制之前保存的默认密码 G#syB6W&#x2F;jNMG 就可以连接到mysql服务<br><img src="/blog/2024/08/1200d9535352/file-20240813230142913.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p>修改默认密码</p>
+<ol>
+<li>修改密码SQL<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;new_password&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<img src="/blog/2024/08/1200d9535352/file-20240813230633218.png" srcset="/blog/img/loading.gif" lazyload></li>
+<li>刷新权限使修改立即生效：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
+<img src="/blog/2024/08/1200d9535352/file-20240813231009497.png" srcset="/blog/img/loading.gif" lazyload></li>
+<li>退出MySQL<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXIT;<br></code></pre></td></tr></table></figure>
+<img src="/blog/2024/08/1200d9535352/file-20240813231026625.png" srcset="/blog/img/loading.gif" lazyload></li>
+</ol>
+<blockquote>
+<p>如果是个人使用我推荐用 root 作为密码，如果有同事或者朋友想连接你的数据库，或者写一些开源的项目或者文章不会泄露任何个人隐私信息，root 也好记忆</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="category-chain-item">开发工具</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/Windows/" class="print-no-link">#Windows</a>
+      
+        <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="print-no-link">#数据库</a>
+      
+        <a href="/blog/tags/MySQL/" class="print-no-link">#MySQL</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Windows 系统 MySQL 9.0.1 安装教程</div>
+      <div>https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Carlos</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2024/08/65c424735cd5.html" title="Linux 系统 MySQL 安装教程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux 系统 MySQL 安装教程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
