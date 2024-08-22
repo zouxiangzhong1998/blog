@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Carlos">
+  <meta name="keywords" content="Carlos,JavaScript,Java,Unity">
+  
+    <meta name="description" content="前言该安装是从Redis 源码编译安装到 Linux 系统，需要C的编译环境，还需要 libc 包，当前安装的Redis版本是redis-stable 7.4.0。  环境检查使用命令查看linux信息，我的系统是 CentOS Linux 7 (Core)要在 CentOS 7 上检查是否具备编译 Redis 所需的 C 编译器（GCC）和 libc 环境，你可以按照以下步骤进行操作：  检查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux安装部署Redis">
+<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/03751abecf4d.html">
+<meta property="og:site_name" content="Carlos&#39;s blog">
+<meta property="og:description" content="前言该安装是从Redis 源码编译安装到 Linux 系统，需要C的编译环境，还需要 libc 包，当前安装的Redis版本是redis-stable 7.4.0。  环境检查使用命令查看linux信息，我的系统是 CentOS Linux 7 (Core)要在 CentOS 7 上检查是否具备编译 Redis 所需的 C 编译器（GCC）和 libc 环境，你可以按照以下步骤进行操作：  检查">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-22T06:20:00.000Z">
+<meta property="article:modified_time" content="2024-08-22T09:47:35.028Z">
+<meta property="article:author" content="Carlos">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="缓存系统">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Linux安装部署Redis - Carlos&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zouxiangzhong1998.github.io","root":"/blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Carlos&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux安装部署Redis"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-22 14:20" pubdate>
+          2024年8月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux安装部署Redis</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>该安装是从Redis 源码编译安装到 Linux 系统，需要C的编译环境，还需要 libc 包，当前安装的Redis版本是redis-stable 7.4.0。</p>
+<hr>
+<h5 id="环境检查"><a href="#环境检查" class="headerlink" title="环境检查"></a>环境检查</h5><p>使用命令查看linux信息，我的系统是 <code>CentOS Linux 7 (Core)</code><br>要在 CentOS 7 上检查是否具备编译 Redis 所需的 C 编译器（GCC）和 libc 环境，你可以按照以下步骤进行操作：</p>
+<ol>
+<li><p><strong>检查 GCC 版本</strong><br>首先，你需要确认系统上是否已经安装了 GCC（GNU Compiler Collection）。如果已安装，你可以使用以下命令来查看 GCC 的版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc --version<br></code></pre></td></tr></table></figure>
+<p>如果命令返回了版本信息，那么说明 GCC 已经安装好了。如果没有安装或未找到 GCC，你需要安装它。在 CentOS 7 上，你可以使用 yum 包管理器来安装 GCC：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo yum install gcc<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>检查 libc</strong><br>libc 是 C 标准库的一部分，通常与 GCC 一起安装。你不需要单独安装 libc，因为它通常是系统默认的一部分。如果你想要确认 libc 的版本，你可以查看 glibc 的版本。在 CentOS 7 中，glibc 的版本可以通过以下命令获取：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ldd --version<br></code></pre></td></tr></table></figure>
+<p>这会显示 ld-linux-x86-64.so.2 或 ld-linux.so.2 的版本，它们是 glibc 的一部分。</p>
+</li>
+<li><p><strong>检查必要的开发工具</strong><br>为了确保编译过程顺利，你还需要安装一些基本的开发工具，例如 make 和 autoconf。你可以使用以下命令来安装它们：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo yum install make autoconf<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>验证编译环境</strong><br>最后，你可以尝试编译一个小的 C 程序来验证编译环境是否正确设置。创建一个名为 hello.c 的文件，并写入以下内容：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后，编译并运行这个程序：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc hello.c -o hello<br>./hello<br></code></pre></td></tr></table></figure>
+<p>如果一切正常，你应该能看到 “Hello, World!” 的输出。<br>通过上述步骤，你可以确认你的 CentOS 7 系统是否具备了编译 Redis 所需的基本编译环境。</p>
+</li>
+</ol>
+<hr>
+<h5 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-from-source/">Install Redis from Source | Docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/redis/redis-hashes">redis&#x2F;redis-hashes: Redis tarball SHA1 hashes (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hunanzp/p/12304622.html">Linux安装部署Redis(超级详细) - 长沙大鹏 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/redis/redis/unstable/redis.conf">raw.githubusercontent.com&#x2F;redis&#x2F;redis&#x2F;unstable&#x2F;redis.conf</a></li>
+</ul>
+<hr>
+<h4 id="下载Redis"><a href="#下载Redis" class="headerlink" title="下载Redis"></a>下载Redis</h4><p>Redis 的源代码文件可以从下载页面获得。你可以通过与 <a target="_blank" rel="noopener" href="https://github.com/redis/redis-hashes">redis-hashes</a> Git 仓库中的摘要进行比较来验证这些下载文件的完整性<br><a target="_blank" rel="noopener" href="https://github.com/redis/redis-hashes">redis&#x2F;redis-hashes</a></p>
+<p>要从 Redis 的下载站点获取最新稳定版本的源代码文件，请运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://download.redis.io/redis-stable.tar.gz<br><span class="hljs-comment"># 或者</span><br>wget http://download.redis.io/releases/redis-7.4.0.tar.gz<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="解压并安装Redis"><a href="#解压并安装Redis" class="headerlink" title="解压并安装Redis"></a>解压并安装Redis</h4><ol>
+<li><p>解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf redis-stable.tar.gz<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>移动redis目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> /data/yunwei/redis-stable /usr/local/redis7<br><span class="hljs-built_in">cd</span> /usr/local/redis7<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>编译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>安装<br>这里多了一个关键字 <strong><code>PREFIX=</code></strong> 这个关键字的作用是编译的时候用于指定程序存放的路径。比如我们现在就是指定了redis必须存放在&#x2F;usr&#x2F;local&#x2F;redis目录。假设不添加该关键字Linux会将可执行文件存放在&#x2F;usr&#x2F;local&#x2F;bin目录，</p>
+</li>
+</ol>
+<p>库文件会存放在&#x2F;usr&#x2F;local&#x2F;lib目录。配置文件会存放在&#x2F;usr&#x2F;local&#x2F;etc目录。其他的资源文件会存放在usr&#x2F;local&#x2F;share目录。这里指定号目录也方便后续的卸载，后续直接rm -rf &#x2F;usr&#x2F;local&#x2F;redis 即可删除redis。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> make PREFIX=/usr/local/redis7 install<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>启动redis，是否正常启动，Ctrl-C 关闭程序<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./bin/redis-server ./redis.conf<br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h4 id="业务配置-学习专用"><a href="#业务配置-学习专用" class="headerlink" title="业务配置(学习专用)"></a>业务配置(学习专用)</h4><ol>
+<li><p>将 redis.conf 配置复制一份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /data/yunwei/redis7/logs<br><span class="hljs-built_in">cp</span> /usr/local/redis7/redis.conf /data/yunwei/redis7/redis.conf<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi /data/yunwei/redis7/redis.conf<br></code></pre></td></tr></table></figure>
+<p>修改的配置如下<br>通过 &#x2F;daemonize  查找到属性，默认是no，更改为yes即可。 (通过&#x2F;关键字查找出现多个结果则使用 n字符切换到下一个即可，查找到结果后输入:noh退回到正常模式)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs conf"># 守护线程启动<br>daemonize yes<br><br># 监听绑定所有 ipv4 和 ipv6（学习专用配置不建议生产使用）<br>bind * -::*<br><br># 保护模式（学习专用配置不建议生产使用）<br>protected-mode no<br><br># 日志文件路径<br>logfile &quot;/data/yunwei/redis7/logs/redis_6379.log&quot;<br><br># 服务启动pid记录文件路径<br>pidfile /data/yunwei/redis7/redis_6379.pid<br><br># 数据保存的文件名<br>dbfilename dump.rdb<br><br># 数据保存的路径<br>dir /data/yunwei/redis7<br><br># 设置密码<br>requirepass root<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/local/redis7/bin/redis-server /data/yunwei/redis7/redis.conf<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>检查启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看程序是否启动</span><br>ps -ef |grep redis<br><br><span class="hljs-comment"># redis 连接</span><br>/usr/local/redis7/bin/redis-cli -h 127.0.0.1 -p 6379<br><span class="hljs-comment"># 连接后输入密码</span><br>auth root<br><span class="hljs-comment"># 查看redis info 信息</span><br>info<br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h4 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h4><p>如果遇到连不上 ，telnet 都连不上对应端口时，可能是linux 开启防火墙了，需要将 6379 添加到防火墙中</p>
+<ol>
+<li><p>telnet 命令，看是否访问的到</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">telnet 192.168.0.106 6379<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>检查防火墙状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl status firewalld<br></code></pre></td></tr></table></figure>
+<p><strong>如果防火墙处于关闭状态，可以跳过此步骤</strong>。如果防火墙处于运行状态，需要开放 <code>MySQL</code> 服务的端口（默认为<code>3306</code>）</p>
+</li>
+<li><p>防火墙开放 MySQL 端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo firewall-cmd --permanent --add-port=6379/tcp<br>sudo firewall-cmd --reload<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定区域所有打开的端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">firewall-cmd --zone=public --list-ports<br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h4 id="配置开机启动"><a href="#配置开机启动" class="headerlink" title="配置开机启动"></a>配置开机启动</h4><ol>
+<li><p>在 &#x2F;etc&#x2F;systemd&#x2F;system&#x2F; 路径下创建 redis6379.service 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /etc/systemd/system/<br>vi redis6379.service<br></code></pre></td></tr></table></figure></li>
+<li><p>写入如下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">[Unit]<br>Description=Redis in-memory data store<br>After=network.target<br><br>[Service]<br>Type=forking<br>ExecStart=/usr/local/redis7/bin/redis-server /data/yunwei/redis7/redis.conf<br>ExecStop=/usr/local/redis7/bin/redis-cli -h 127.0.0.1 -p 6379 -a root shutdown<br>TimeoutStopSec=60s<br>Restart=always<br>RestartSec=10s<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>加载新的服务单元文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl daemon-reload<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Redis 服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl start redis6379<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>设置 Redis 服务开机启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> redis6379<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>检查 Redis 服务状态</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">sudo</span> systemctl status redis6379<br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h4 id="配置文件信息"><a href="#配置文件信息" class="headerlink" title="配置文件信息"></a>配置文件信息</h4><p>在目录&#x2F;usr&#x2F;local&#x2F;redis下有一个redis.conf的配置文件。我们上面启动方式就是执行了该配置文件的配置运行的。我么可以通过cat、vi、less等Linux内置的读取命令读取该文件。</p>
+<p>也可以通过redis-cli命令进入redis控制台后通过CONFIG GET * 的方式读取所有配置项。 如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">redis-cli<br>CONFIG GET *<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>配置项名称</th>
+<th>配置项值范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>daemonize</td>
+<td>yes、no</td>
+<td>yes表示启用守护进程，默认是no即不以守护进程方式运行。其中Windows系统下不支持启用守护进程方式运行</td>
+</tr>
+<tr>
+<td>port</td>
+<td></td>
+<td>指定 Redis 监听端口，默认端口为 6379</td>
+</tr>
+<tr>
+<td>bind</td>
+<td></td>
+<td>绑定的主机地址,如果需要设置远程访问则直接将这个属性备注下或者改为bind * 即可,这个属性和下面的protected-mode控制了是否可以远程访问 。</td>
+</tr>
+<tr>
+<td>protected-mode</td>
+<td>yes 、no</td>
+<td>保护模式，该模式控制外部网是否可以连接redis服务，默认是yes,所以默认我们外网是无法访问的，如需外网连接rendis服务则需要将此属性改为no。</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>300</td>
+<td>当客户端闲置多长时间后关闭连接，如果指定为 0，表示关闭该功能</td>
+</tr>
+<tr>
+<td>loglevel</td>
+<td>debug、verbose、notice、warning</td>
+<td>日志级别，默认为 notice</td>
+</tr>
+<tr>
+<td>databases</td>
+<td>16</td>
+<td>设置数据库的数量，默认的数据库是0。整个通过客户端工具可以看得到</td>
+</tr>
+<tr>
+<td>rdbcompression</td>
+<td>yes、no</td>
+<td>指定存储至本地数据库时是否压缩数据，默认为 yes，Redis 采用 LZF 压缩，如果为了节省 CPU 时间，可以关闭该选项，但会导致数据库文件变的巨大。</td>
+</tr>
+<tr>
+<td>dbfilename</td>
+<td>dump.rdb</td>
+<td>指定本地数据库文件名，默认值为 dump.rdb</td>
+</tr>
+<tr>
+<td>dir</td>
+<td></td>
+<td>指定本地数据库存放目录</td>
+</tr>
+<tr>
+<td>requirepass</td>
+<td></td>
+<td>设置 Redis 连接密码，如果配置了连接密码，客户端在连接 Redis 时需要通过 AUTH <password> 命令提供密码，默认关闭</td>
+</tr>
+<tr>
+<td>maxclients</td>
+<td>0</td>
+<td>设置同一时间最大客户端连接数，默认无限制，Redis 可以同时打开的客户端连接数为 Redis 进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis 会关闭新的连接并向客户端返回 max number of clients reached 错误信息。</td>
+</tr>
+<tr>
+<td>maxmemory</td>
+<td>XXX <bytes></td>
+<td>指定 Redis 最大内存限制，Redis 在启动时会把数据加载到内存中，达到最大内存后，Redis 会先尝试清除已到期或即将到期的 Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis 新的 vm 机制，会把 Key 存放内存，Value 会存放在 swap 区。配置项值范围列里XXX为数值。</td>
+</tr>
+<tr>
+<td>这里我要将daemonize改为yes，不然我每次启动都得在redis-server命令后面加符号&amp;，不这样操作则只要回到Linux控制台则redis服务会自动关闭，同时也将bind注释，将protected-mode设置为no。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>这样启动后我就可以在外网访问了。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi /usr/local/redis/redis.conf<br></code></pre></td></tr></table></figure>
+<p>通过 &#x2F;daemonize  查找到属性，默认是no，更改为yes即可。 (通过&#x2F;关键字查找出现多个结果则使用 n字符切换到下一个即可，查找到结果后输入:noh退回到正常模式)</p>
+<hr>
+<h4 id="redis-cli-使用"><a href="#redis-cli-使用" class="headerlink" title="redis-cli 使用"></a>redis-cli 使用</h4><p><code>redis-cli</code>是连接本地redis服务的一个命令，通过该命令后可以既然怒redis的脚本控制台。</p>
+<p>输入exit可以退出redis脚本控制台</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="category-chain-item">开发工具</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="category-chain-item">缓存系统</a>
+  
+  
+    <span>></span>
+    
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F/Redis/" class="category-chain-item">Redis</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/blog/tags/%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="print-no-link">#缓存系统</a>
+      
+        <a href="/blog/tags/Redis/" class="print-no-link">#Redis</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux安装部署Redis</div>
+      <div>https://zouxiangzhong1998.github.io/blog/2024/08/03751abecf4d.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Carlos</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2024/08/d276cb301771.html" title="Linux 环境维护">
+                        <span class="hidden-mobile">Linux 环境维护</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
