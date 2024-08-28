@@ -46,6 +46,10 @@
       
       <category>编程语言</category>
       
+      <category>Java</category>
+      
+      <category>Java基础</category>
+      
     </categories>
     
     
@@ -105,6 +109,8 @@
       <category>编程语言</category>
       
       <category>Java</category>
+      
+      <category>Java环境</category>
       
     </categories>
     
@@ -202,9 +208,9 @@
     
     <tags>
       
-      <tag>Windows</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>Windows</tag>
       
       <tag>VMware</tag>
       
