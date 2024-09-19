@@ -21,26 +21,26 @@
   
     <meta name="description" content="系统信息使用命令查看linux信息，我的系统是 CentOS Linux 7 (Core) 1cat &#x2F;etc&#x2F;os-release  确定一下系统的glibc版本，使用如下命令，我的版本是glibc-2.17，下载对应的版本MySQL 1rpm -qa | grep glibc  检查是否已经安装过mysql 1rpm -qa | grep mysql 如果环境中有遗留mysql则执行删除命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux 系统 MySQL 安装教程">
-<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/65c424735cd5.html">
+<meta property="og:title" content="CentOS Linux系统MySQL安装教程">
+<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/24f8cc30b9a4.html">
 <meta property="og:site_name" content="Carlos&#39;s blog">
 <meta property="og:description" content="系统信息使用命令查看linux信息，我的系统是 CentOS Linux 7 (Core) 1cat &#x2F;etc&#x2F;os-release  确定一下系统的glibc版本，使用如下命令，我的版本是glibc-2.17，下载对应的版本MySQL 1rpm -qa | grep glibc  检查是否已经安装过mysql 1rpm -qa | grep mysql 如果环境中有遗留mysql则执行删除命令">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/public/2024/08/65c424735cd5/file-20240815145655706.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/public/2024/08/65c424735cd5/file-20240815181707902.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/public/2024/08/65c424735cd5/file-20240815181847532.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/24f8cc30b9a4/file-20240815145655706.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/24f8cc30b9a4/file-20240815181707902.png">
+<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/24f8cc30b9a4/file-20240815181847532.png">
 <meta property="article:published_time" content="2024-08-14T06:26:00.000Z">
-<meta property="article:modified_time" content="2024-08-23T06:21:45.921Z">
+<meta property="article:modified_time" content="2024-09-19T07:14:28.319Z">
 <meta property="article:author" content="Carlos">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zouxiangzhong1998.github.io/blog/public/2024/08/65c424735cd5/file-20240815145655706.png">
+<meta name="twitter:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/24f8cc30b9a4/file-20240815145655706.png">
   
   
   
-  <title>Linux 系统 MySQL 安装教程 - Carlos&#39;s blog</title>
+  <title>CentOS Linux系统MySQL安装教程 - Carlos&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux 系统 MySQL 安装教程"></span>
+            <span id="subtitle" data-typed-text="CentOS Linux系统MySQL安装教程"></span>
           
         </div>
 
@@ -289,17 +289,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Linux 系统 MySQL 安装教程</h1>
+            <h1 id="seo-header">CentOS Linux系统MySQL安装教程</h1>
             
             
               <div class="markdown-body">
                 
                 <h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4><p>使用命令查看linux信息，我的系统是 <code>CentOS Linux 7 (Core)</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat /etc/os-release<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/public/2024/08/65c424735cd5/file-20240815145655706.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p><img src="/blog/2024/08/24f8cc30b9a4/file-20240815145655706.png" srcset="/blog/img/loading.gif" lazyload></p>
 <p>确定一下系统的glibc版本，使用如下命令，我的版本是glibc-2.17，下载对应的版本MySQL</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">rpm -qa | grep glibc<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/public/2024/08/65c424735cd5/file-20240815181707902.png" srcset="/blog/img/loading.gif" lazyload></p>
+<p><img src="/blog/2024/08/24f8cc30b9a4/file-20240815181707902.png" srcset="/blog/img/loading.gif" lazyload></p>
 <p>检查是否已经安装过mysql</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">rpm -qa | grep mysql<br></code></pre></td></tr></table></figure>
 <p>如果环境中有遗留mysql则执行删除命令</p>
@@ -310,7 +310,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf  xxx xxx<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="下载信息"><a href="#下载信息" class="headerlink" title="下载信息"></a>下载信息</h4><h5 id="推荐-正常下载上传到Linux服务器"><a href="#推荐-正常下载上传到Linux服务器" class="headerlink" title="(推荐)正常下载上传到Linux服务器"></a>(推荐)正常下载上传到Linux服务器</h5><p>MySQL 8.4.2 LTS，服务器我们用长期支持版本<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL :: Download MySQL Community Server</a><br><img src="/blog/public/2024/08/65c424735cd5/file-20240815181847532.png" srcset="/blog/img/loading.gif" lazyload><br>连接到Linux后，执行创建 &#x2F;data&#x2F;yunwei 目录，并进入到目录下</p>
+<h4 id="下载信息"><a href="#下载信息" class="headerlink" title="下载信息"></a>下载信息</h4><h5 id="推荐-正常下载上传到Linux服务器"><a href="#推荐-正常下载上传到Linux服务器" class="headerlink" title="(推荐)正常下载上传到Linux服务器"></a>(推荐)正常下载上传到Linux服务器</h5><p>MySQL 8.4.2 LTS，服务器我们用长期支持版本<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL :: Download MySQL Community Server</a><br><img src="/blog/2024/08/24f8cc30b9a4/file-20240815181847532.png" srcset="/blog/img/loading.gif" lazyload><br>连接到Linux后，执行创建 &#x2F;data&#x2F;yunwei 目录，并进入到目录下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir -p /data/yunwei &amp;&amp; cd /data/yunwei<br></code></pre></td></tr></table></figure>
 
 <p>上传MySQL压缩文件</p>
@@ -503,8 +503,8 @@ systemctl restart mysql
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux 系统 MySQL 安装教程</div>
-      <div>https://zouxiangzhong1998.github.io/blog/2024/08/65c424735cd5.html</div>
+      <div>CentOS Linux系统MySQL安装教程</div>
+      <div>https://zouxiangzhong1998.github.io/blog/2024/08/24f8cc30b9a4.html</div>
     </div>
     <div class="license-meta">
       
@@ -548,9 +548,9 @@ systemctl restart mysql
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2024/08/2c4f755ae28a.html" title="Windows 系统 搭建 Linux 环境">
+                      <a href="/blog/2024/08/a98730f8fb7a.html" title="Windows 系统 搭建 CentOS Linux 环境">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows 系统 搭建 Linux 环境</span>
+                        <span class="hidden-mobile">Windows 系统 搭建 CentOS Linux 环境</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

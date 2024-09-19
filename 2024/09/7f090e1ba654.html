@@ -19,42 +19,24 @@
   <meta name="author" content="Carlos">
   <meta name="keywords" content="Carlos,JavaScript,Java,Unity">
   
-    <meta name="description" content="我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。 下载信息MySQL最新发布版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server  MySQL 8.X 版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server (Ar">
+    <meta name="description" content="先安装依赖包 12# 在根目录一键安装上面四个依赖yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel  创建目录并进入目录 1mkdir -p &#x2F;data&#x2F;yunwei &amp;&amp; cd &#x2F;data&#x2F;yunwei  下载nginx并解压安装包 1234# 下载nginx安装包wget https:&#x2F;&#x2F;n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows 系统 MySQL 9.0.1 安装教程">
-<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352.html">
+<meta property="og:title" content="CentOS Linux系统安装Nginx">
+<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/09/7f090e1ba654.html">
 <meta property="og:site_name" content="Carlos&#39;s blog">
-<meta property="og:description" content="我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。 下载信息MySQL最新发布版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server  MySQL 8.X 版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server (Ar">
+<meta property="og:description" content="先安装依赖包 12# 在根目录一键安装上面四个依赖yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel  创建目录并进入目录 1mkdir -p &#x2F;data&#x2F;yunwei &amp;&amp; cd &#x2F;data&#x2F;yunwei  下载nginx并解压安装包 1234# 下载nginx安装包wget https:&#x2F;&#x2F;n">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180120534.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180223258.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813214955284.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220101748.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220308898.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220426776.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813221525152.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225102691.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225149247.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225415079.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225443911.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225551016.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231147073.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813230142913.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813230633218.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231009497.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231026625.png">
-<meta property="article:published_time" content="2024-08-13T09:33:00.000Z">
-<meta property="article:modified_time" content="2024-08-23T06:21:45.921Z">
+<meta property="article:published_time" content="2024-09-12T06:20:00.000Z">
+<meta property="article:modified_time" content="2024-09-19T07:10:15.636Z">
 <meta property="article:author" content="Carlos">
-<meta property="article:tag" content="Windows">
-<meta property="article:tag" content="数据库">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="代理服务器">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180120534.png">
   
   
   
-  <title>Windows 系统 MySQL 9.0.1 安装教程 - Carlos&#39;s blog</title>
+  <title>CentOS Linux系统安装Nginx - Carlos&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Windows 系统 MySQL 9.0.1 安装教程"></span>
+            <span id="subtitle" data-typed-text="CentOS Linux系统安装Nginx"></span>
           
         </div>
 
@@ -243,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-13 17:33" pubdate>
-          2024年8月13日 下午
+        <time datetime="2024-09-12 14:20" pubdate>
+          2024年9月12日 下午
         </time>
       </span>
     
@@ -255,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          791 字
+          234 字
         
       </span>
     
@@ -266,7 +248,7 @@
         
         
         
-          7 分钟
+          2 分钟
         
       </span>
     
@@ -303,69 +285,43 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Windows 系统 MySQL 9.0.1 安装教程</h1>
+            <h1 id="seo-header">CentOS Linux系统安装Nginx</h1>
             
             
               <div class="markdown-body">
                 
-                <p>我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。</p>
-<h4 id="下载信息"><a href="#下载信息" class="headerlink" title="下载信息"></a>下载信息</h4><p>MySQL最新发布版本，我推荐使用 zip 的方式安装<br><img src="/blog/2024/08/1200d9535352/file-20240813180120534.png" srcset="/blog/img/loading.gif" lazyload></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL :: Download MySQL Community Server</a></li>
-</ul>
-<p>MySQL 8.X 版本，我推荐使用 zip 的方式安装<br><img src="/blog/2024/08/1200d9535352/file-20240813180223258.png" srcset="/blog/img/loading.gif" lazyload></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">MySQL :: Download MySQL Community Server (Archived Versions)</a></li>
-</ul>
-<p>下载完成后解压<br><img src="/blog/2024/08/1200d9535352/file-20240813214955284.png" srcset="/blog/img/loading.gif" lazyload></p>
-<hr>
-<h4 id="配置初始化"><a href="#配置初始化" class="headerlink" title="配置初始化"></a>配置初始化</h4><p>解压后的目录没有 <code>my.ini</code> 文件，自行创建在安装根目录下添加 <code>my.ini</code> (新建文本文件，将文件后缀改为 .ini)，写入基本配置:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs shell">[mysqld]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置3306端口</span><br>port=3306<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql的安装目录</span><br>basedir=D:\Application\Oracle\MySQL\mysql-9.0.1-winx64<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql数据库的数据的存放目录</span><br>datadir=D:\Application\Oracle\MySQL\mysql-9.0.1-winx64\Data<br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许最大连接数</span><br>max_connections=200<br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许连接失败的次数。</span><br>max_connect_errors=10<br><span class="hljs-meta prompt_"># </span><span class="language-bash">服务端使用的字符集默认为utf8mb4</span><br>character-set-server=utf8mb4<br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建新表时将使用的默认存储引擎</span><br>default-storage-engine=INNODB<br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认使用“mysql_native_password”插件认证</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql_native_password</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql 9.0 是不支持该参数的</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql 8.X 是支持该参数，请根据版本查看该参数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">default_authentication_plugin=mysql_native_password</span><br>[mysql]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql客户端默认字符集</span><br>default-character-set=utf8mb4<br>[client]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql客户端连接服务端时默认使用的端口</span><br>port=3306<br>default-character-set=utf8mb4<br></code></pre></td></tr></table></figure>
-
-<p>配置文件中的路径要和实际存放的路径一致（不要手动创建Data文件夹，如果初始化失败请记住删除Data文件夹）<br><img src="/blog/2024/08/1200d9535352/file-20240813220101748.png" srcset="/blog/img/loading.gif" lazyload></p>
-<hr>
-<h4 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h4><p>在安装时，避免权限问题出错我们尽量使用管理员身份运行CMD，否则在安装时会报错，会导致安装失败的情况<br><img src="/blog/2024/08/1200d9535352/file-20240813220308898.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>因为我存放的目录是在D盘，先切换盘符在进入到指定目录，需要进入到MySQL安装目录下的<code>bin</code>目录<br><img src="/blog/2024/08/1200d9535352/file-20240813220426776.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>在MySQL目录下的bin目录下执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --initialize --console<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/2024/08/1200d9535352/file-20240813221525152.png" srcset="/blog/img/loading.gif" lazyload></p>
-<blockquote>
-<p>注意！[注意] [MY-010454] [服务器] root@localhost: G#syB6W&#x2F;jNMG 就是初始密码（不含首位空格）。在没有更改密码前，需要记住这个密码，后续登录需要用到。复制密码先保存起来!!!</p>
-</blockquote>
-<hr>
-<h4 id="安装MySQL服务-启动MySQL-服务"><a href="#安装MySQL服务-启动MySQL-服务" class="headerlink" title="安装MySQL服务&amp;启动MySQL 服务"></a>安装MySQL服务&amp;启动MySQL 服务</h4><p>安装MySQL服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --install [服务名]                     ###（服务名可以不加默认为mysql）<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/2024/08/1200d9535352/file-20240813225102691.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>表示成功了</p>
-<blockquote>
-<p>如果出现了 The service already exists!<br><img src="/blog/2024/08/1200d9535352/file-20240813225149247.png" srcset="/blog/img/loading.gif" lazyload><br>说明mysql 名称存在<br>可以把它删除掉<br>SC删除的MySQL<br><img src="/blog/2024/08/1200d9535352/file-20240813225415079.png" srcset="/blog/img/loading.gif" lazyload><br>在执行上面安装服务<br><img src="/blog/2024/08/1200d9535352/file-20240813225443911.png" srcset="/blog/img/loading.gif" lazyload></p>
-</blockquote>
-<p>删除对应服务名称命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sc delete mysql<br></code></pre></td></tr></table></figure>
-
-<p>服务安装成功之后通过命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net start mysql<br></code></pre></td></tr></table></figure>
-
-<p>启动MySQL的服务<br><img src="/blog/2024/08/1200d9535352/file-20240813225551016.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>[可选] 关掉mysql服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net stop mysql<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/2024/08/1200d9535352/file-20240813231147073.png" srcset="/blog/img/loading.gif" lazyload></p>
-<hr>
-<h4 id="连接MySQL-修改密码"><a href="#连接MySQL-修改密码" class="headerlink" title="连接MySQL&amp;修改密码"></a>连接MySQL&amp;修改密码</h4><p>在当前数据库的bin目录下 有个 <code>mysql.exe</code> 是可以用于连接mysql服务的命令行客户端工具</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql -h localhost -P 3306 -u root -p<br></code></pre></td></tr></table></figure>
-<p>输入上面命令后复制之前保存的默认密码 G#syB6W&#x2F;jNMG 就可以连接到mysql服务<br><img src="/blog/2024/08/1200d9535352/file-20240813230142913.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>修改默认密码</p>
-<ol>
-<li>修改密码SQL<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;new_password&#x27;</span>;<br></code></pre></td></tr></table></figure>
-<img src="/blog/2024/08/1200d9535352/file-20240813230633218.png" srcset="/blog/img/loading.gif" lazyload></li>
-<li>刷新权限使修改立即生效：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
-<img src="/blog/2024/08/1200d9535352/file-20240813231009497.png" srcset="/blog/img/loading.gif" lazyload></li>
-<li>退出MySQL<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXIT;<br></code></pre></td></tr></table></figure>
-<img src="/blog/2024/08/1200d9535352/file-20240813231026625.png" srcset="/blog/img/loading.gif" lazyload></li>
+                <ol>
+<li><p>先安装依赖包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 在根目录一键安装上面四个依赖</span><br>yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>创建目录并进入目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir -p /data/yunwei &amp;&amp; cd /data/yunwei<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>下载nginx并解压安装包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 下载nginx安装包</span><br>wget https://nginx.org/download/nginx-1.26.2.tar.gz<br><span class="hljs-comment"># 解压</span><br>tar -xvf nginx-1.26.2.tar.gz<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>安装nginx</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 进入指定安装目录</span><br><span class="hljs-built_in">cd</span> /data/yunwei/nginx-1.26.2<br><br><span class="hljs-comment"># 执行命令  </span><br>./configure --with-http_stub_status_module --with-http_ssl_module<br><br><span class="hljs-comment"># 执行make命令</span><br>make &amp;&amp; make install<br></code></pre></td></tr></table></figure></li>
 </ol>
 <blockquote>
-<p>如果是个人使用我推荐用 root 作为密码，如果有同事或者朋友想连接你的数据库，或者写一些开源的项目或者文章不会泄露任何个人隐私信息，root 也好记忆</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/you-men/p/12827547.html">Nginx常用模块及案例 - 常见-youmen - 博客园 (cnblogs.com)</a></p>
 </blockquote>
+<ol start="5">
+<li>配置nginx.conf（这里我们只演示安装，本身默认自带一个配置，配了 80 端口）</li>
+</ol>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/54chensongxia/p/12938929.html">Nginx配置文件详解 - 程序员自由之路 - 博客园 (cnblogs.com)</a></p>
+</blockquote>
+<ol start="6">
+<li><p>nginx各种命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 进入安装目录中</span><br><span class="hljs-built_in">cd</span> /usr/local/nginx/sbin<br><br><span class="hljs-comment"># 启动</span><br>./nginx<br><br><span class="hljs-comment"># 关闭</span><br>./nginx -s stop<br><br><span class="hljs-comment"># 重载配置</span><br>./nginx -s reload<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo firewall-cmd --permanent --add-port=80/tcp --add-port=80/udp<br>sudo firewall-cmd --reload<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定区域所有打开的端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">firewall-cmd --zone=public --list-ports<br></code></pre></td></tr></table></figure></li>
+</ol>
 
                 
               </div>
@@ -389,12 +345,12 @@
   
     <span>></span>
     
-  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="category-chain-item">代理服务器</a>
   
   
     <span>></span>
     
-  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/Nginx/" class="category-chain-item">Nginx</a>
   
   
 
@@ -413,11 +369,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/Windows/" class="print-no-link">#Windows</a>
+        <a href="/blog/tags/Linux/" class="print-no-link">#Linux</a>
       
-        <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="print-no-link">#数据库</a>
+        <a href="/blog/tags/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="print-no-link">#代理服务器</a>
       
-        <a href="/blog/tags/MySQL/" class="print-no-link">#MySQL</a>
+        <a href="/blog/tags/Nginx/" class="print-no-link">#Nginx</a>
       
     </div>
   
@@ -429,8 +385,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Windows 系统 MySQL 9.0.1 安装教程</div>
-      <div>https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352.html</div>
+      <div>CentOS Linux系统安装Nginx</div>
+      <div>https://zouxiangzhong1998.github.io/blog/2024/09/7f090e1ba654.html</div>
     </div>
     <div class="license-meta">
       
@@ -442,7 +398,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月13日</div>
+          <div>2024年9月12日</div>
         </div>
       
       
@@ -474,15 +430,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2024/08/24f8cc30b9a4.html" title="CentOS Linux系统MySQL安装教程">
+                      <a href="/blog/2024/09/f08e9562e44c.html" title="CentOS Linux系统安装MongoDB">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CentOS Linux系统MySQL安装教程</span>
+                        <span class="hidden-mobile">CentOS Linux系统安装MongoDB</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/blog/2024/08/e6a5e5db0eb9.html" title="Java数组类型">
+                        <span class="hidden-mobile">Java数组类型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

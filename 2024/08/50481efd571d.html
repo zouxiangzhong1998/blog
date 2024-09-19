@@ -19,42 +19,24 @@
   <meta name="author" content="Carlos">
   <meta name="keywords" content="Carlos,JavaScript,Java,Unity">
   
-    <meta name="description" content="我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。 下载信息MySQL最新发布版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server  MySQL 8.X 版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server (Ar">
+    <meta name="description" content="前言Java 21 是长期支持版本，Oracle 将至少提供 8 年支持。  环境检查我的系统是 CentOS Linux 7 (Core) x64 架构，需要下载对应的架构的版本 1wget https:&#x2F;&#x2F;download.oracle.com&#x2F;java&#x2F;21&#x2F;latest&#x2F;jdk-21_linux-x64_bin.tar.gz   卸载Java 环境RPM方式卸载Java环境 rpm查询ja">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows 系统 MySQL 9.0.1 安装教程">
-<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352.html">
+<meta property="og:title" content="CentOS Linux安装JDK21环境">
+<meta property="og:url" content="https://zouxiangzhong1998.github.io/blog/2024/08/50481efd571d.html">
 <meta property="og:site_name" content="Carlos&#39;s blog">
-<meta property="og:description" content="我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。 下载信息MySQL最新发布版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server  MySQL 8.X 版本，我推荐使用 zip 的方式安装  MySQL :: Download MySQL Community Server (Ar">
+<meta property="og:description" content="前言Java 21 是长期支持版本，Oracle 将至少提供 8 年支持。  环境检查我的系统是 CentOS Linux 7 (Core) x64 架构，需要下载对应的架构的版本 1wget https:&#x2F;&#x2F;download.oracle.com&#x2F;java&#x2F;21&#x2F;latest&#x2F;jdk-21_linux-x64_bin.tar.gz   卸载Java 环境RPM方式卸载Java环境 rpm查询ja">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180120534.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180223258.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813214955284.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220101748.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220308898.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813220426776.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813221525152.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225102691.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225149247.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225415079.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225443911.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813225551016.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231147073.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813230142913.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813230633218.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231009497.png">
-<meta property="og:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813231026625.png">
-<meta property="article:published_time" content="2024-08-13T09:33:00.000Z">
-<meta property="article:modified_time" content="2024-08-23T06:21:45.921Z">
+<meta property="article:published_time" content="2024-08-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-19T07:09:58.336Z">
 <meta property="article:author" content="Carlos">
-<meta property="article:tag" content="Windows">
-<meta property="article:tag" content="数据库">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="编程语言">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352/file-20240813180120534.png">
   
   
   
-  <title>Windows 系统 MySQL 9.0.1 安装教程 - Carlos&#39;s blog</title>
+  <title>CentOS Linux安装JDK21环境 - Carlos&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Windows 系统 MySQL 9.0.1 安装教程"></span>
+            <span id="subtitle" data-typed-text="CentOS Linux安装JDK21环境"></span>
           
         </div>
 
@@ -243,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-13 17:33" pubdate>
-          2024年8月13日 下午
+        <time datetime="2024-08-23 00:00" pubdate>
+          2024年8月23日 凌晨
         </time>
       </span>
     
@@ -255,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          791 字
+          641 字
         
       </span>
     
@@ -266,7 +248,7 @@
         
         
         
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -303,69 +285,52 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Windows 系统 MySQL 9.0.1 安装教程</h1>
+            <h1 id="seo-header">CentOS Linux安装JDK21环境</h1>
             
             
               <div class="markdown-body">
                 
-                <p>我使用 MySQL 9.0.1 版本来作为安装教程，MySQL 8.X 版本一样可以使用该方式安装。</p>
-<h4 id="下载信息"><a href="#下载信息" class="headerlink" title="下载信息"></a>下载信息</h4><p>MySQL最新发布版本，我推荐使用 zip 的方式安装<br><img src="/blog/2024/08/1200d9535352/file-20240813180120534.png" srcset="/blog/img/loading.gif" lazyload></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL :: Download MySQL Community Server</a></li>
-</ul>
-<p>MySQL 8.X 版本，我推荐使用 zip 的方式安装<br><img src="/blog/2024/08/1200d9535352/file-20240813180223258.png" srcset="/blog/img/loading.gif" lazyload></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/community/">MySQL :: Download MySQL Community Server (Archived Versions)</a></li>
-</ul>
-<p>下载完成后解压<br><img src="/blog/2024/08/1200d9535352/file-20240813214955284.png" srcset="/blog/img/loading.gif" lazyload></p>
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Java 21 是长期支持版本，Oracle 将至少提供 8 年支持。</p>
 <hr>
-<h4 id="配置初始化"><a href="#配置初始化" class="headerlink" title="配置初始化"></a>配置初始化</h4><p>解压后的目录没有 <code>my.ini</code> 文件，自行创建在安装根目录下添加 <code>my.ini</code> (新建文本文件，将文件后缀改为 .ini)，写入基本配置:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs shell">[mysqld]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置3306端口</span><br>port=3306<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql的安装目录</span><br>basedir=D:\Application\Oracle\MySQL\mysql-9.0.1-winx64<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql数据库的数据的存放目录</span><br>datadir=D:\Application\Oracle\MySQL\mysql-9.0.1-winx64\Data<br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许最大连接数</span><br>max_connections=200<br><span class="hljs-meta prompt_"># </span><span class="language-bash">允许连接失败的次数。</span><br>max_connect_errors=10<br><span class="hljs-meta prompt_"># </span><span class="language-bash">服务端使用的字符集默认为utf8mb4</span><br>character-set-server=utf8mb4<br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建新表时将使用的默认存储引擎</span><br>default-storage-engine=INNODB<br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认使用“mysql_native_password”插件认证</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql_native_password</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql 9.0 是不支持该参数的</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">mysql 8.X 是支持该参数，请根据版本查看该参数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">default_authentication_plugin=mysql_native_password</span><br>[mysql]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql客户端默认字符集</span><br>default-character-set=utf8mb4<br>[client]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置mysql客户端连接服务端时默认使用的端口</span><br>port=3306<br>default-character-set=utf8mb4<br></code></pre></td></tr></table></figure>
+<h4 id="环境检查"><a href="#环境检查" class="headerlink" title="环境检查"></a>环境检查</h4><p>我的系统是 <code>CentOS Linux 7 (Core)</code> x64 架构，需要下载对应的架构的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz<br></code></pre></td></tr></table></figure>
 
-<p>配置文件中的路径要和实际存放的路径一致（不要手动创建Data文件夹，如果初始化失败请记住删除Data文件夹）<br><img src="/blog/2024/08/1200d9535352/file-20240813220101748.png" srcset="/blog/img/loading.gif" lazyload></p>
 <hr>
-<h4 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h4><p>在安装时，避免权限问题出错我们尽量使用管理员身份运行CMD，否则在安装时会报错，会导致安装失败的情况<br><img src="/blog/2024/08/1200d9535352/file-20240813220308898.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>因为我存放的目录是在D盘，先切换盘符在进入到指定目录，需要进入到MySQL安装目录下的<code>bin</code>目录<br><img src="/blog/2024/08/1200d9535352/file-20240813220426776.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>在MySQL目录下的bin目录下执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --initialize --console<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/2024/08/1200d9535352/file-20240813221525152.png" srcset="/blog/img/loading.gif" lazyload></p>
-<blockquote>
-<p>注意！[注意] [MY-010454] [服务器] root@localhost: G#syB6W&#x2F;jNMG 就是初始密码（不含首位空格）。在没有更改密码前，需要记住这个密码，后续登录需要用到。复制密码先保存起来!!!</p>
-</blockquote>
+<h4 id="卸载Java-环境"><a href="#卸载Java-环境" class="headerlink" title="卸载Java 环境"></a>卸载Java 环境</h4><h5 id="RPM方式卸载Java环境"><a href="#RPM方式卸载Java环境" class="headerlink" title="RPM方式卸载Java环境"></a>RPM方式卸载Java环境</h5><ol>
+<li>rpm查询java安装包名称（注：rpm -qa 列举出所有RPM安装的包）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -qa | grep <span class="hljs-string">&#x27;java\|jdk\|gcj\|jre&#x27;</span><br></code></pre></td></tr></table></figure></li>
+<li>卸载查询出来的所有安装包名称（注：rpm -e –nodeps 是RPM卸载命令）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 执行卸载命令（查询出来什么就卸载什么）</span><br>rpm -e --nodeps jdk-1.8-1.8.0_381-9.x86_64<br></code></pre></td></tr></table></figure></li>
+<li>补充 前面可以查询安装包安装到系统的文件位置（rpm -ql 安装包名称）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -ql jdk-1.8-1.8.0_381-9.x86_64<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="yum方式卸载Java环境："><a href="#yum方式卸载Java环境：" class="headerlink" title="yum方式卸载Java环境："></a>yum方式卸载Java环境：</h5><ol>
+<li>yum查询Java安装的环境信息（注：yum list installed 列举所有安装的服务）<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">yum list installed | grep <span class="hljs-string">&#x27;java\|jdk\|gcj\|jre&#x27;</span><br></code></pre></td></tr></table></figure></li>
+<li>卸载查询出来的所有安装信息（注：yum -y remove 是yum卸载命令）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 执行卸载命令（查询出来什么就卸载什么）</span><br>yum -y remove jdk-1.8.x86_64<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="tar-gz方式安装后的卸载："><a href="#tar-gz方式安装后的卸载：" class="headerlink" title="tar.gz方式安装后的卸载："></a>tar.gz方式安装后的卸载：</h5><ol>
+<li>删除之前的解压文件位置（如下是我的文件位置）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf /usr/local/java/jdk1.8.0_381/<br></code></pre></td></tr></table></figure></li>
+<li>剔除之前配置的 &#x2F;etc&#x2F;profile 下的配置信息，如下示例：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">## 剔除这些配置信息</span><br><span class="hljs-comment">###JAVA###</span><br>JAVA_HOME=<span class="hljs-string">&quot;/usr/local/java/jdk1.8.0_381&quot;</span><br>JRE_HOME=<span class="hljs-string">&quot;/usr/local/java/jdk1.8.0_381/jre&quot;</span><br>PATH=<span class="hljs-variable">$JRE_HOME</span>/bin:<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br>CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib/dt.jar:<span class="hljs-variable">$JAVA_HOME</span>/lib/tools.jar<br><span class="hljs-built_in">export</span> JAVA_HOME JRE_HOME PATH CLASSPATH<br></code></pre></td></tr></table></figure></li>
+<li>删除配置生效<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">source</span> /etc/profile<br></code></pre></td></tr></table></figure></li>
+</ol>
 <hr>
-<h4 id="安装MySQL服务-启动MySQL-服务"><a href="#安装MySQL服务-启动MySQL-服务" class="headerlink" title="安装MySQL服务&amp;启动MySQL 服务"></a>安装MySQL服务&amp;启动MySQL 服务</h4><p>安装MySQL服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --install [服务名]                     ###（服务名可以不加默认为mysql）<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/2024/08/1200d9535352/file-20240813225102691.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>表示成功了</p>
-<blockquote>
-<p>如果出现了 The service already exists!<br><img src="/blog/2024/08/1200d9535352/file-20240813225149247.png" srcset="/blog/img/loading.gif" lazyload><br>说明mysql 名称存在<br>可以把它删除掉<br>SC删除的MySQL<br><img src="/blog/2024/08/1200d9535352/file-20240813225415079.png" srcset="/blog/img/loading.gif" lazyload><br>在执行上面安装服务<br><img src="/blog/2024/08/1200d9535352/file-20240813225443911.png" srcset="/blog/img/loading.gif" lazyload></p>
-</blockquote>
-<p>删除对应服务名称命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sc delete mysql<br></code></pre></td></tr></table></figure>
-
-<p>服务安装成功之后通过命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net start mysql<br></code></pre></td></tr></table></figure>
-
-<p>启动MySQL的服务<br><img src="/blog/2024/08/1200d9535352/file-20240813225551016.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>[可选] 关掉mysql服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net stop mysql<br></code></pre></td></tr></table></figure>
-<p><img src="/blog/2024/08/1200d9535352/file-20240813231147073.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/technologies/downloads/#java21">Java Downloads | Oracle 中国</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/antLaddie/p/17599359.html">Linux下安装Java环境三种方式（tar.gz、rpm、yum） - 蚂蚁小哥 - 博客园 (cnblogs.com)</a></p>
 <hr>
-<h4 id="连接MySQL-修改密码"><a href="#连接MySQL-修改密码" class="headerlink" title="连接MySQL&amp;修改密码"></a>连接MySQL&amp;修改密码</h4><p>在当前数据库的bin目录下 有个 <code>mysql.exe</code> 是可以用于连接mysql服务的命令行客户端工具</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql -h localhost -P 3306 -u root -p<br></code></pre></td></tr></table></figure>
-<p>输入上面命令后复制之前保存的默认密码 G#syB6W&#x2F;jNMG 就可以连接到mysql服务<br><img src="/blog/2024/08/1200d9535352/file-20240813230142913.png" srcset="/blog/img/loading.gif" lazyload></p>
-<p>修改默认密码</p>
-<ol>
-<li>修改密码SQL<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;new_password&#x27;</span>;<br></code></pre></td></tr></table></figure>
-<img src="/blog/2024/08/1200d9535352/file-20240813230633218.png" srcset="/blog/img/loading.gif" lazyload></li>
-<li>刷新权限使修改立即生效：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
-<img src="/blog/2024/08/1200d9535352/file-20240813231009497.png" srcset="/blog/img/loading.gif" lazyload></li>
-<li>退出MySQL<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXIT;<br></code></pre></td></tr></table></figure>
-<img src="/blog/2024/08/1200d9535352/file-20240813231026625.png" srcset="/blog/img/loading.gif" lazyload></li>
+<h3 id="安装Java运行环境"><a href="#安装Java运行环境" class="headerlink" title="安装Java运行环境"></a>安装Java运行环境</h3><h4 id="压缩包手动安装（推荐）"><a href="#压缩包手动安装（推荐）" class="headerlink" title="压缩包手动安装（推荐）"></a>压缩包手动安装（推荐）</h4><ol>
+<li>下载 (当前最新版本是 jdk-21.0.4)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz<br></code></pre></td></tr></table></figure></li>
+<li>解压<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">tar -zxvf jdk-21_linux-x64_bin.tar.gz<br></code></pre></td></tr></table></figure></li>
+<li>剪切到指定目录<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">mkdir</span> -p /usr/local/java/<br><span class="hljs-built_in">mv</span> jdk-21.0.4 /usr/local/java/<br></code></pre></td></tr></table></figure></li>
+<li>检查Java解压是否可用<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">/usr/local/java/jdk-21.0.4/bin/java -version<br>/usr/local/java/jdk-21.0.4/bin/javac -version<br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h5 id="配置Java环境变量"><a href="#配置Java环境变量" class="headerlink" title="配置Java环境变量"></a>配置Java环境变量</h5><ol>
+<li>手动配置Java环境变量（因为系统不知道我们java解压在哪）<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">vi /etc/profile<br></code></pre></td></tr></table></figure></li>
+<li>配置信息<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">###JAVA###</span><br>JAVA_HOME=<span class="hljs-string">&quot;/usr/local/java/jdk-21.0.4&quot;</span><br>PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br>CLASSPATH=.:<span class="hljs-variable">$JAVA_HOME</span>/lib/dt.jar:<span class="hljs-variable">$JAVA_HOME</span>/lib/tools.jar<br><span class="hljs-built_in">export</span> JAVA_HOME PATH CLASSPATH<br></code></pre></td></tr></table></figure></li>
+<li>让配置立即生效<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">source</span> /etc/profile<br></code></pre></td></tr></table></figure></li>
+<li>检查Java环境是否成功安装<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">java -version<br></code></pre></td></tr></table></figure></li>
+<li>查看JDK的安装路径（安装后才有）<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">which</span> java<br></code></pre></td></tr></table></figure></li>
 </ol>
 <blockquote>
-<p>如果是个人使用我推荐用 root 作为密码，如果有同事或者朋友想连接你的数据库，或者写一些开源的项目或者文章不会泄露任何个人隐私信息，root 也好记忆</p>
+<p>注意:<br>若yum安装则默认Java被安装在 “ &#x2F;usr&#x2F;lib&#x2F;jvm ”（一般不用手动配置）<br>若RPM安装则默认Java被安装在 “ &#x2F;usr&#x2F;java&#x2F;jdk1.8.0-x64 ”（一般不用手动配置）</p>
 </blockquote>
+<hr>
 
                 
               </div>
@@ -384,17 +349,17 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="category-chain-item">开发环境</a>
+  <a href="/blog/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="category-chain-item">编程语言</a>
   
   
     <span>></span>
     
-  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  <a href="/blog/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" class="category-chain-item">Java</a>
   
   
     <span>></span>
     
-  <a href="/blog/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" class="category-chain-item">MySQL</a>
+  <a href="/blog/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/Java%E7%8E%AF%E5%A2%83/" class="category-chain-item">Java环境</a>
   
   
 
@@ -413,11 +378,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/Windows/" class="print-no-link">#Windows</a>
+        <a href="/blog/tags/Linux/" class="print-no-link">#Linux</a>
       
-        <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="print-no-link">#数据库</a>
+        <a href="/blog/tags/Java/" class="print-no-link">#Java</a>
       
-        <a href="/blog/tags/MySQL/" class="print-no-link">#MySQL</a>
+        <a href="/blog/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="print-no-link">#编程语言</a>
       
     </div>
   
@@ -429,8 +394,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Windows 系统 MySQL 9.0.1 安装教程</div>
-      <div>https://zouxiangzhong1998.github.io/blog/2024/08/1200d9535352.html</div>
+      <div>CentOS Linux安装JDK21环境</div>
+      <div>https://zouxiangzhong1998.github.io/blog/2024/08/50481efd571d.html</div>
     </div>
     <div class="license-meta">
       
@@ -442,7 +407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月13日</div>
+          <div>2024年8月23日</div>
         </div>
       
       
@@ -474,15 +439,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2024/08/24f8cc30b9a4.html" title="CentOS Linux系统MySQL安装教程">
+                      <a href="/blog/2024/08/6fc45ebe24a7.html" title="Java整数运算">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CentOS Linux系统MySQL安装教程</span>
+                        <span class="hidden-mobile">Java整数运算</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/blog/2024/08/8bda59f191d5.html" title="CentOS Linux安装部署Redis">
+                        <span class="hidden-mobile">CentOS Linux安装部署Redis</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
